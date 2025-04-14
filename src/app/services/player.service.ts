@@ -90,7 +90,6 @@ export class PlayerService {
     const currentState = this.stateSubject.value;
     const { players, fieldPositions } = currentState;
 
-    // Удаляем игрока с текущей позиции, если он уже на поле
     const updatedFieldPositions = { ...fieldPositions };
     Object.entries(updatedFieldPositions).forEach(([pos, p]) => {
       if (p?.id === player.id) {
@@ -98,13 +97,11 @@ export class PlayerService {
       }
     });
 
-    // Если на новой позиции есть игрок, возвращаем его в список
     const existingPlayer = updatedFieldPositions[position];
     const updatedPlayers = existingPlayer 
       ? [...players.filter(p => p.id !== player.id), existingPlayer]
       : players.filter(p => p.id !== player.id);
 
-    // Обновляем позицию
     updatedFieldPositions[position] = player;
 
     this.updateState({

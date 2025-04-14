@@ -1,5 +1,4 @@
 <div class="formation-container">
-  <!-- Список игроков -->
   <div class="players-list" 
        cdkDropList 
        [cdkDropListData]="players$ | async" 
@@ -24,7 +23,6 @@
     </div>
   </div>
 
-  <!-- Футбольное поле -->
   <div class="football-field">
     <div class="field-positions">
       <ng-container *ngIf="fieldPositions$ | async as positions">
@@ -66,7 +64,6 @@
     </div>
   </div>
 
-  <!-- Управление -->
   <div class="controls">
     <button class="save-button" 
             (click)="saveFormation()"
