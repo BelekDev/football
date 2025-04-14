@@ -1,6 +1,6 @@
 # Football Formation Builder
 
-Приложение для создания футбольных расстановок с использованием Angular и Angular CDK Drag and Drop.
+This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.0.2.
 
 ## Функциональность
 
@@ -24,56 +24,37 @@
 - npm (версия 7 или выше)
 - Angular CLI (версия 17 или выше)
 
-## Установка
-
-1. Клонируйте репозиторий:
 ```bash
-git clone https://github.com/your-username/football-formation.git
-cd football-formation
+ng generate component component-name
 ```
 
-2. Установите зависимости:
+For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+
 ```bash
-npm install
+ng generate --help
 ```
 
-## Запуск приложения
+## Building
 
-1. Запустите сервер разработки:
+To build the project run:
+
 ```bash
-ng serve
+ng build
 ```
 
-2. Откройте браузер и перейдите по адресу:
-```
-http://localhost:4200
-```
+This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+
+## Running unit tests
 
 ## Структура проекта
 
-```
-src/
-├── app/
-│   ├── components/
-│   │   └── formation/
-│   │       ├── formation.component.ts
-│   │       ├── formation.component.html
-│   │       └── formation.component.scss
-│   ├── models/
-│   │   ├── player.model.ts
-│   │   └── formation.model.ts
-│   ├── services/
-│   │   └── player.service.ts
-│   └── constants/
-│       └── positions.const.ts
+```bash
+ng test
 ```
 
-## Использование
+## Running end-to-end tests
 
-1. Перетащите игрока из списка на нужную позицию на поле
-2. Игрок может быть размещен только на разрешенных для него позициях
-3. Чтобы удалить игрока с позиции, нажмите на кнопку "×"
-4. Чтобы сохранить текущую расстановку, нажмите кнопку "Сохранить расстановку"
+For end-to-end (e2e) testing, run:
 
 ## Особенности реализации
 
@@ -83,6 +64,6 @@ src/
 - Типизация с использованием TypeScript
 - Модульная структура проекта
 
-## Лицензия
+## Additional Resources
 
-MIT
+For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
