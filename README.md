@@ -1,59 +1,88 @@
-# FootballFormation
+# Football Formation Builder
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.0.2.
+Приложение для создания футбольных расстановок с использованием Angular и Angular CDK Drag and Drop.
 
-## Development server
+## Функциональность
 
-To start a local development server, run:
+- Список доступных игроков
+- Футбольное поле с предопределенными позициями
+- Drag and Drop функциональность для размещения игроков
+- Валидация позиций (игроки могут быть размещены только на разрешенных позициях)
+- Сохранение расстановки
+- Удаление игроков с позиций
 
+## Технологии
+
+- Angular 17
+- Angular CDK Drag and Drop
+- TypeScript
+- SCSS
+
+## Требования
+
+- Node.js (версия 16 или выше)
+- npm (версия 7 или выше)
+- Angular CLI (версия 17 или выше)
+
+## Установка
+
+1. Клонируйте репозиторий:
+```bash
+git clone https://github.com/your-username/football-formation.git
+cd football-formation
+```
+
+2. Установите зависимости:
+```bash
+npm install
+```
+
+## Запуск приложения
+
+1. Запустите сервер разработки:
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
+2. Откройте браузер и перейдите по адресу:
+```
+http://localhost:4200
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Структура проекта
 
-```bash
-ng generate --help
+```
+src/
+├── app/
+│   ├── components/
+│   │   └── formation/
+│   │       ├── formation.component.ts
+│   │       ├── formation.component.html
+│   │       └── formation.component.scss
+│   ├── models/
+│   │   ├── player.model.ts
+│   │   └── formation.model.ts
+│   ├── services/
+│   │   └── player.service.ts
+│   └── constants/
+│       └── positions.const.ts
 ```
 
-## Building
+## Использование
 
-To build the project run:
+1. Перетащите игрока из списка на нужную позицию на поле
+2. Игрок может быть размещен только на разрешенных для него позициях
+3. Чтобы удалить игрока с позиции, нажмите на кнопку "×"
+4. Чтобы сохранить текущую расстановку, нажмите кнопку "Сохранить расстановку"
 
-```bash
-ng build
-```
+## Особенности реализации
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+- Использование Angular CDK для реализации Drag and Drop
+- Реактивное программирование с RxJS
+- Соблюдение принципов SOLID
+- Типизация с использованием TypeScript
+- Модульная структура проекта
 
-## Running unit tests
+## Лицензия
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+MIT

@@ -1,0 +1,77 @@
+<div class="formation-container">
+  <!-- Список игроков -->
+  <div class="players-list" 
+       cdkDropList 
+       [cdkDropListData]="players$ | async" 
+       (cdkDropListDropped)="onDrop($event)"
+       #playersList="cdkDropList">
+    <div class="player-card" 
+         *ngFor="let player of players$ | async; trackBy: trackByPlayerId" 
+         cdkDrag
+         [cdkDragData]="player"
+         (cdkDragStarted)="onDragStarted()"
+         (cdkDragEnded)="onDragEnded()"
+         (mouseenter)="hoveredPlayer = player"
+         (mouseleave)="hoveredPlayer = null">
+      <img [src]="player.photoUrl" 
+           [alt]="player.firstName + ' ' + player.lastName"
+           class="player-photo">
+      <div class="player-info">
+        <span class="player-number">{{player.number}}</span>
+        <span class="player-name">{{player.firstName}} {{player.lastName}}</span>
+        <span class="player-description">{{player.description}}</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Футбольное поле -->
+  <div class="football-field">
+    <div class="field-positions">
+      <ng-container *ngIf="fieldPositions$ | async as positions">
+        <div *ngFor="let position of getPositions(positions); trackBy: trackByPosition" 
+             [id]="position.key"
+             class="position"
+             cdkDropList
+             [cdkDropListData]="[position.value]"
+             (cdkDropListDropped)="onDrop($event)"
+             [cdkDropListConnectedTo]="[playersList]"
+             [cdkDropListEnterPredicate]="canDropDrag.bind(this, position.key)"
+             (mouseenter)="hoveredPosition = position.key"
+             (mouseleave)="hoveredPosition = null"
+             [class.invalid]="hoveredPlayer && !canDropHover(position.key, hoveredPlayer)">
+          <div class="position-name">{{positionNames[position.key]}}</div>
+          
+          <!-- Игрок на позиции -->
+          <div *ngIf="position.value" 
+               class="player-on-field" 
+               cdkDrag 
+               [cdkDragData]="position.value"
+               (cdkDragStarted)="onDragStarted()"
+               (cdkDragEnded)="onDragEnded()">
+            <img [src]="position.value.photoUrl" 
+                 [alt]="position.value.firstName + ' ' + position.value.lastName"
+                 class="player-photo">
+            <div class="player-info">
+              <span class="player-number">{{position.value.number}}</span>
+              <span class="player-name">{{position.value.lastName}}</span>
+            </div>
+            <button class="remove-button" 
+                    (click)="removePlayer(position.key)"
+                    aria-label="Удалить игрока">
+              ×
+            </button>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+
+  <!-- Управление -->
+  <div class="controls">
+    <button class="save-button" 
+            (click)="saveFormation()"
+            aria-label="Сохранить расстановку">
+      Сохранить расстановку
+    </button>
+  </div>
+</div> 
